@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 52757cb36b594584399327cdb9228010
+timeCreated: 1458675786
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: boss_0
+    21300002: boss_1
+    21300004: boss_2
+    21300006: boss_3
+    21300008: boss_4
+    21300010: boss_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: boss_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 640
+        width: 121
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 63.5}
+        - {x: -60.5, y: 35.5}
+        - {x: -60.5, y: -34.5}
+        - {x: -50.5, y: -63.5}
+        - {x: 40.5, y: -63.5}
+        - {x: 60.5, y: -32.5}
+        - {x: 60.5, y: 54.5}
+        - {x: 28.5, y: 63.5}
+    - name: boss_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 512
+        width: 121
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 63.5}
+        - {x: -60.5, y: 35.5}
+        - {x: -60.5, y: -34.5}
+        - {x: -50.5, y: -63.5}
+        - {x: 40.5, y: -63.5}
+        - {x: 60.5, y: -32.5}
+        - {x: 60.5, y: 54.5}
+        - {x: 28.5, y: 63.5}
+    - name: boss_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 384
+        width: 121
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 63.5}
+        - {x: -60.5, y: 35.5}
+        - {x: -60.5, y: -34.5}
+        - {x: -50.5, y: -63.5}
+        - {x: 40.5, y: -63.5}
+        - {x: 60.5, y: -32.5}
+        - {x: 60.5, y: 54.5}
+        - {x: 28.5, y: 63.5}
+    - name: boss_3
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 256
+        width: 121
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 63.5}
+        - {x: -60.5, y: 35.5}
+        - {x: -60.5, y: -34.5}
+        - {x: -50.5, y: -63.5}
+        - {x: 40.5, y: -63.5}
+        - {x: 60.5, y: -32.5}
+        - {x: 60.5, y: 54.5}
+        - {x: 28.5, y: 63.5}
+    - name: boss_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 128
+        width: 121
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 63.5}
+        - {x: -60.5, y: 35.5}
+        - {x: -60.5, y: -34.5}
+        - {x: -50.5, y: -63.5}
+        - {x: 40.5, y: -63.5}
+        - {x: 60.5, y: -32.5}
+        - {x: 60.5, y: 54.5}
+        - {x: 28.5, y: 63.5}
+    - name: boss_5
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 121
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 63.5}
+        - {x: -60.5, y: 35.5}
+        - {x: -60.5, y: -34.5}
+        - {x: -50.5, y: -63.5}
+        - {x: 40.5, y: -63.5}
+        - {x: 60.5, y: -32.5}
+        - {x: 60.5, y: 54.5}
+        - {x: 28.5, y: 63.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
