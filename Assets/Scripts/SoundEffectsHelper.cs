@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 /// <summary>
 /// Creating instance of sounds from code with no effort
@@ -22,6 +23,9 @@ public class SoundEffectsHelper : MonoBehaviour
 	public AudioClip screamSound;
 	public AudioClip creditsSound;
 	public AudioClip heySound;
+	public AudioClip playerDestroyedSound;
+	public AudioClip pickCoin;
+	public AudioClip playerDeathSound;
 
 	void Awake()
 	{
@@ -42,24 +46,44 @@ public class SoundEffectsHelper : MonoBehaviour
 		}
 	}
 
-	public void MakeExplosionSound()
+	public void PlayExplosionSound()
 	{
-		MakeSound(explosionSound);
+		PlaySound(explosionSound);
 	}
 
-	public void MakePlayerShotSound()
+	public void PlayPlayerShotSound()
 	{
-		_audio.volume = 1;
-		MakeSound(playerShotSound);
+		PlaySound(playerShotSound);
 	}
 
-	public void MakeEnemyShotSound()
+	public void PlayeEnemyShotSound()
 	{
-		MakeSound(enemyShotSound);
+		PlaySound(enemyShotSound);
 	}
 
-	private void MakeSound(AudioClip originalClip)
+	public void PlayScreamSound()
 	{
-		_audio.PlayOneShot(originalClip);
+		PlaySound(screamSound);
+	}
+
+	public void PlayPlayerDestroyedSound()
+	{
+		PlaySound (playerDestroyedSound);	
+	}
+
+	public void PlayPickCoin()
+	{
+		PlaySound(pickCoin);
+	}
+
+	public void PlayPlayerDeathSound()
+	{
+		PlaySound (playerDeathSound);	
+	}
+
+	private void PlaySound(AudioClip originalClip)
+	{
+		if (originalClip != null)
+			_audio.PlayOneShot(originalClip);
 	}
 }

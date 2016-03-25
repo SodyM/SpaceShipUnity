@@ -11,6 +11,8 @@ public class HealthScript : MonoBehaviour
 	/// </summary>
 	public int hp = 1;
 
+	public int damagePoints = 1;
+
 	/// <summary>
 	/// Enemy or player?
 	/// </summary>
@@ -22,18 +24,43 @@ public class HealthScript : MonoBehaviour
 	/// <param name="damageCount"></param>
 	public void Damage(int damageCount)
 	{
+		Debug.Log ("damageCount: " + damageCount);
+
 		hp -= damageCount;
 
-		if (hp <= 0)
-		{			
-			// Play explosion sound effect
-			SoundEffectsHelper.Instance.MakeExplosionSound();
+		if (isEnemy)
+		{
+			if (hp <= 0)
+			{	
+				// add explostion animation object
+				SpecialEffectsHelper.Instance.AddExplosion(transform.position);
 
-			SpecialEffectsHelper.Instance.AddExplosion(transform.position);
-			//SpecialEffectsHelper.Instance.Explosion();
+				// Play explosion sound effect
+				SoundEffectsHelper.Instance.PlayExplosionSound();
 
-			// Dead!
-			Destroy(gameObject);
+				// Dead!
+				Destroy(gameObject);
+			}	
+		}
+		else{
+			if (hp <= 0)
+			{
+				// add explostion animation object
+				SpecialEffectsHelper.Instance.AddExplosion(transform.position);
+
+				// Play explosion sound effect
+				SoundEffectsHelper.Instance.PlayExplosionSound();
+
+				SoundEffectsHelper.Instance.PlayPlayerDestroyedSound();
+
+
+				// Dead!
+				Destroy(gameObject);
+			}
+			else
+			{
+				SoundEffectsHelper.Instance.PlayScreamSound();
+			}
 		}
 	}
 
