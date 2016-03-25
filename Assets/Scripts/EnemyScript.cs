@@ -55,7 +55,7 @@ public class EnemyScript : MonoBehaviour
 				{
 					weapon.Attack(true);
 
-					//SoundEffectsHelper.Instance.MakeEnemyShotSound ();
+					SoundEffectsHelper.Instance.MakeEnemyShotSound ();
 				}
 			}
 
@@ -73,8 +73,10 @@ public class EnemyScript : MonoBehaviour
 		hasSpawn = true;
 
 		// Enable everything
+
 		// -- Collider
 		GetComponent<Collider2D>().enabled = true;
+
 		// -- Moving
 		moveScript.enabled = true;
 		// -- Shooting

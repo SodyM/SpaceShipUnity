@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 78efb25a8a88be94bbd8129db2b83478
-timeCreated: 1458670345
+timeCreated: 1458921073
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,8 @@ TextureImporter:
     21300016: explosion_8
     21300018: explosion_9
     21300020: explosion_10
+    21300022: explosion_11
+    21300024: explosion_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -81,6 +83,14 @@ TextureImporter:
         - {x: 25, y: -26}
         - {x: 29, y: -11}
         - {x: 29, y: 16}
+      - - {x: -38, y: 22}
+        - {x: -40, y: 20}
+        - {x: -40, y: 17}
+        - {x: -38, y: 15}
+        - {x: -35, y: 15}
+        - {x: -33, y: 17}
+        - {x: -33, y: 20}
+        - {x: -35, y: 22}
     - name: explosion_1
       rect:
         serializedVersion: 2
@@ -316,6 +326,50 @@ TextureImporter:
         - {x: 42, y: -33}
         - {x: 42, y: 39}
         - {x: 29, y: 50}
+    - name: explosion_11
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 0
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: -50}
+        - {x: 0, y: -49}
+        - {x: 0, y: -46}
+        - {x: -3, y: -45}
+        - {x: -5, y: -47}
+      - - {x: -3, y: 39}
+        - {x: -12, y: 39}
+        - {x: -29, y: 34}
+        - {x: -43, y: 21}
+        - {x: -43, y: -40}
+        - {x: -18, y: -44}
+        - {x: 29, y: -44}
+        - {x: 44, y: -4}
+        - {x: 44, y: 16}
+        - {x: 12, y: 35}
+      - - {x: -46, y: 9}
+        - {x: -51, y: 7}
+        - {x: -51, y: -10}
+        - {x: -50, y: -12}
+        - {x: -43, y: -12}
+        - {x: -38, y: -11}
+        - {x: -38, y: 9}
+    - name: explosion_12
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1
+        width: 130
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 

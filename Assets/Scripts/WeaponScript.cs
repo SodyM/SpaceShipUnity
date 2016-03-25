@@ -55,7 +55,6 @@ public class WeaponScript : MonoBehaviour
 			// Assign position
 			Vector3 startPostiont = transform.position;
 			startPostiont.x += indentFromCenter;
-			//shotTransform.position = transform.position;
 			shotTransform.position = startPostiont;
 
 			// The is enemy property
