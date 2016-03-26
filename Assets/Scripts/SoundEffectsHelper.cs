@@ -25,7 +25,6 @@ public class SoundEffectsHelper : MonoBehaviour
 	public AudioClip heySound;
 	public AudioClip playerDestroyedSound;
 	public AudioClip pickCoin;
-	public AudioClip playerDeathSound;
 
 	void Awake()
 	{
@@ -75,10 +74,15 @@ public class SoundEffectsHelper : MonoBehaviour
 	{
 		PlaySound(pickCoin);
 	}
-
-	public void PlayPlayerDeathSound()
+		
+	public void PlayCoolSound()
 	{
-		PlaySound (playerDeathSound);	
+		PlaySound (coolSound);	
+	}
+
+	public void PlayCredits()
+	{
+		_audio.PlayOneShot (creditsSound);
 	}
 
 	private void PlaySound(AudioClip originalClip)

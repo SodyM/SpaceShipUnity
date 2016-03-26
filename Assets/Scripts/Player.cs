@@ -9,13 +9,6 @@ public class Player : MonoBehaviour {
 	// 2 - Store the movement
 	private Vector2 movement;
 
-	private int _score = 0;
-
-	void InitPlayer()
-	{
-		_score = 0;
-	}
-
 	void Update()
 	{
 		// 3 - Retrieve axis information
@@ -67,10 +60,23 @@ public class Player : MonoBehaviour {
 		// move player
 		GetComponent<Rigidbody2D>().velocity = movement;
 	}
-
+		
 	void OnTriggerEnter2D(Collider2D otherCollider)
 	{
 		bool damagePlayer = false;
+
+		if (otherCollider.gameObject.tag.Equals ("CreditsHelper"))
+		{
+			// stop scrolling
+
+			// stop main music
+			Camera.main.GetComponent<AudioSource>().Stop ();
+
+			// play loop
+			SoundEffectsHelper.Instance.PlayCredits ();
+
+			gameObject.SetActive (false);
+		}
 
 		// Collision with enemy
 		EnemyScript enemy = otherCollider.gameObject.GetComponent<EnemyScript>();
@@ -79,16 +85,18 @@ public class Player : MonoBehaviour {
 			// Kill the enemy
 			HealthScript enemyHealth = enemy.GetComponent<HealthScript>();
 			if (enemyHealth != null)
+			{
 				enemyHealth.Damage(enemyHealth.hp);
-
+				//GameManager.Instance.AddPoints (10);
+			}
+				
 			damagePlayer = true;
 		}
 
 		CoinScript coin = otherCollider.gameObject.GetComponent<CoinScript>();
 		if (coin != null)
 		{
-			this._score += 10;
-			Debug.Log ("Score: " + this._score);
+			//GameManager.Instance.AddPoints (10);
 			SoundEffectsHelper.Instance.PlayPickCoin();
 			coin.DestroyCoin();
 		}

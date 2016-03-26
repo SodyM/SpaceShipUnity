@@ -24,8 +24,6 @@ public class HealthScript : MonoBehaviour
 	/// <param name="damageCount"></param>
 	public void Damage(int damageCount)
 	{
-		Debug.Log ("damageCount: " + damageCount);
-
 		hp -= damageCount;
 
 		if (isEnemy)
@@ -40,6 +38,8 @@ public class HealthScript : MonoBehaviour
 
 				// Dead!
 				Destroy(gameObject);
+
+				GameManager.Instance.AddPoints (10);
 			}	
 		}
 		else{
@@ -59,6 +59,7 @@ public class HealthScript : MonoBehaviour
 			}
 			else
 			{
+				GameManager.Instance.ShowDamage ();
 				SoundEffectsHelper.Instance.PlayScreamSound();
 			}
 		}
