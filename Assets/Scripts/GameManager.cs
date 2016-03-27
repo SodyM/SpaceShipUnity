@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{	
-		Cursor.visible = false;
+		//Cursor.visible = false;
 
 		// setup reference to game manager
 		if (Instance == null)
