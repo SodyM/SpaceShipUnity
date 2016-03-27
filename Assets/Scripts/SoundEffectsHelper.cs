@@ -43,6 +43,8 @@ public class SoundEffectsHelper : MonoBehaviour
 			// let's just add the AudioSource component dynamically
 			_audio = gameObject.AddComponent<AudioSource>();
 		}
+
+		_audio.volume = 0.2F;
 	}
 
 	public void PlayExplosionSound()

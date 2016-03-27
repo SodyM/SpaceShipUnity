@@ -10,7 +10,7 @@ public class BossScript : MonoBehaviour
 	private WeaponScript[] weapons;
 	private Animator animator;
 	private SpriteRenderer[] renderers;
-	private Transform[] transforms;
+
 
 	// Boss pattern (not really an AI)
 	public float minAttackCooldown = 0.5f;
@@ -34,7 +34,6 @@ public class BossScript : MonoBehaviour
 		// Get the renderers in children
 		renderers = GetComponentsInChildren<SpriteRenderer>();
 
-		transforms = GetComponentsInChildren<Transform>();
 	}
 
 	void Start()
@@ -85,7 +84,7 @@ public class BossScript : MonoBehaviour
 				positionTarget = Vector2.zero;
 
 				// Set or unset the attack animation
-				animator.SetBool("ShieldActive", isAttacking);
+				animator.SetBool("Attack", isAttacking);
 			}
 
 			// Attack
@@ -95,10 +94,6 @@ public class BossScript : MonoBehaviour
 				// Stop any movement
 				moveScript.direction = Vector2.zero;
 
-				foreach(Transform trans in transforms)
-				{
-					trans.position = Vector3.zero;	
-				}
 
 				/*
 				foreach (WeaponScript weapon in weapons)
