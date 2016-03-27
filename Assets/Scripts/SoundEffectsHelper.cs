@@ -69,7 +69,7 @@ public class SoundEffectsHelper : MonoBehaviour
 
 	public void PlayPlayerDestroyedSound()
 	{
-		PlaySound (playerDestroyedSound);	
+		PlaySound(playerDestroyedSound);	
 	}
 
 	public void PlayPickCoin()
@@ -79,12 +79,17 @@ public class SoundEffectsHelper : MonoBehaviour
 		
 	public void PlayCoolSound()
 	{
-		PlaySound (coolSound);	
+		PlaySound(coolSound);	
 	}
 
 	public void PlayCredits()
 	{
-		_audio.PlayOneShot (creditsSound);
+		_audio.PlayOneShot(creditsSound);
+	}
+
+	public void PlayEnemyShotSound()
+	{
+		PlaySound(enemyShotSound);
 	}
 
 	private void PlaySound(AudioClip originalClip)

@@ -93,18 +93,14 @@ public class BossScript : MonoBehaviour
 			{
 				// Stop any movement
 				moveScript.direction = Vector2.zero;
-
-
-				/*
 				foreach (WeaponScript weapon in weapons)
 				{
 					if (weapon != null && weapon.enabled && weapon.CanAttack)
 					{
 						weapon.Attack(true);
-						SoundEffectsHelper.Instance.MakeEnemyShotSound();
+						SoundEffectsHelper.Instance.PlayEnemyShotSound();
 					}
 				}
-				*/
 			}
 			// Move
 			//----------
@@ -115,7 +111,6 @@ public class BossScript : MonoBehaviour
 				{
 					// Get a point on the screen, convert to world
 					Vector2 randomPoint = new Vector2(Random.Range(0f, 1f), Random.Range(0f, 1f));
-
 					positionTarget = Camera.main.ViewportToWorldPoint(randomPoint);
 				}
 
