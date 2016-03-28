@@ -14,6 +14,7 @@ public class SpecialEffectsHelper : MonoBehaviour
 	public static SpecialEffectsHelper Instance;
 
 	public Transform explosion;
+	public Transform coin;
 
 	void Awake()
 	{
@@ -29,5 +30,10 @@ public class SpecialEffectsHelper : MonoBehaviour
 	public void AddExplosion(Vector3 position)
 	{		
 		Transform explosionObject = (Transform)Instantiate(explosion, position, transform.rotation);
+	}
+
+	public void AddCoin(Vector3 position)
+	{
+		Transform coinObject = (Transform)Instantiate(coin, position, transform.rotation);
 	}
 }

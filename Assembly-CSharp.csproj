@@ -50,8 +50,10 @@
      <Compile Include="Assets\Scripts\EnemyScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HealthScript.cs" />
+     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\PlayerPrefManager.cs" />
      <Compile Include="Assets\Scripts\RendererExtensions.cs" />
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
      <Compile Include="Assets\Scripts\ShotScript.cs" />

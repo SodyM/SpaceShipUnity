@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 217a29b82b4dbf749a055705af03b55c
+timeCreated: 1459186192
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Quit_0
+    21300002: Quit_1
+    21300004: Credits_0
+    21300006: Credits_1
+    21300008: Settings_0
+    21300010: Settings_1
+    21300012: New_0
+    21300014: New_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Quit_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 164
+        width: 53
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Quit_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 144
+        width: 53
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Credits_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 122
+        width: 93
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Credits_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 102
+        width: 93
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Settings_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 81
+        width: 111
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Settings_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 61
+        width: 111
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: New_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 42
+        width: 104
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: New_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 22
+        width: 104
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

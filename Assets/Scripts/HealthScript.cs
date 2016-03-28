@@ -39,7 +39,8 @@ public class HealthScript : MonoBehaviour
 				// Dead!
 				Destroy(gameObject);
 
-				GameManager.Instance.AddPoints (10);
+				// create coin
+				SpecialEffectsHelper.Instance.AddCoin (transform.position);						
 			}	
 		}
 		else{
@@ -50,12 +51,10 @@ public class HealthScript : MonoBehaviour
 
 				// Play explosion sound effect
 				SoundEffectsHelper.Instance.PlayExplosionSound();
-
 				SoundEffectsHelper.Instance.PlayPlayerDestroyedSound();
 
-
-				// Dead!
-				Destroy(gameObject);
+				// kill player
+				KillPlayer();
 			}
 			else
 			{
@@ -63,6 +62,13 @@ public class HealthScript : MonoBehaviour
 				SoundEffectsHelper.Instance.PlayScreamSound();
 			}
 		}
+	}
+
+
+	void KillPlayer()
+	{
+		Player player = gameObject.GetComponent<Player>();
+		player.KillPlayer();
 	}
 
 	void OnTriggerEnter2D(Collider2D otherCollider)

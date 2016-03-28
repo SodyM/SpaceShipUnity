@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -96,7 +98,7 @@ public class Player : MonoBehaviour {
 		CoinScript coin = otherCollider.gameObject.GetComponent<CoinScript>();
 		if (coin != null)
 		{
-			//GameManager.Instance.AddPoints (10);
+			GameManager.Instance.AddPoints (10);
 			SoundEffectsHelper.Instance.PlayPickCoin();
 			coin.DestroyCoin();
 		}
@@ -112,5 +114,23 @@ public class Player : MonoBehaviour {
 		
 	void OnDestroy()
 	{
+	}
+
+	public IEnumerator KillPlayer()
+	{
+		yield return new WaitForSeconds (0.1f);
+		//Application.LoadLevel (Application.loadedLevelName);
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+
+		/*
+		if (GameManager.Instance) {
+			GameManager.Instance.ResetGame ();
+		}
+		else
+		{
+			// just reload current level
+			Application.LoadLevel (Application.loadedLevelName);
+		}
+		*/
 	}
 }
