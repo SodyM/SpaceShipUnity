@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MainMenuManager : MonoBehaviour {
+
+	AudioSource 	_audio;
 
 	public int startLives = 3; // how many lives to start the game with on New Game
 
@@ -15,16 +18,65 @@ public class MainMenuManager : MonoBehaviour {
 	public GameObject SettingsDefaultButton;
 	public GameObject QuitButton;
 
+	public AudioClip clickSound;
+
+	private Animator[] _animators;
+
+	int activeIndex = 0;
 
 	// Use this for initialization
 	void Start () {
+		_audio = GetComponent<AudioSource>();
+		if (_audio == null)
+		{ 
+			// if AudioSource is missing
+			//Debug.LogWarning("AudioSource component missing from this gameobject. Adding one.");
+			// let's just add the AudioSource component dynamically
+			_audio = gameObject.AddComponent<AudioSource>();
+		}
+
+		// save animators
+		_animators = _MainMenu.GetComponentsInChildren<Animator> ();
+
 		// Show the proper menu
 		ShowMenu("MainMenu");
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+	{
+		bool up = Input.GetKeyDown(KeyCode.UpArrow);
+		if (up){
+			if (activeIndex > 0)
+				activeIndex--;
+			else
+				activeIndex = 0;
+
+			SetMenuAsActive (activeIndex);
+		}
+
+		bool down = Input.GetKeyDown(KeyCode.DownArrow);
+		if (down){
+			if (activeIndex < 2)
+				activeIndex++;
+			else
+				activeIndex = 0;
+
+			SetMenuAsActive(activeIndex);
+		}
+	}
+
+	void SetMenuAsActive(int index)
+	{
+		// deactivate all animators
+		foreach(var animator in _animators)
+		{
+			animator.ResetTrigger ("Selected");	
+		}
+
+		_animators[index].SetTrigger("Selected");
+
+		_audio.PlayOneShot(clickSound);
 	}
 
 	// Show the proper menu
@@ -39,7 +91,7 @@ public class MainMenuManager : MonoBehaviour {
 		switch(name) {
 		case "MainMenu":
 			_MainMenu.SetActive (true);
-			//EventSystem.current.SetSelectedGameObject (MenuDefaultButton);
+			SetMenuAsActive(0);
 			break;
 		case "LevelSelect":
 			//_LevelsMenu.SetActive(true);
