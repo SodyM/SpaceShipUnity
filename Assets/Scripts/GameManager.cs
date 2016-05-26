@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using System;
+
 
 public class GameManager : MonoBehaviour {
 
@@ -53,12 +56,26 @@ public class GameManager : MonoBehaviour {
 		// get initial spawn location
 		_spawnLocation = _player.transform.position;
 
+        PlayerPrefManager.SetLives(lives);
+
 		// get stored players prefs
 		RefreshPlayerState();
 
 		// get the ui ready for the game
 		RefreshGUI();
 	}
+
+    // set things up here
+    void Awake () {
+        Debug.Log("aaaaa");
+
+        // setup reference to game manager
+        if (gm == null)
+            gm = this.GetComponent<GameManager>();
+
+        // setup all the variables, the UI, and provide errors if things not setup properly.
+        SetupDefaults();
+    }
 
 	void RefreshPlayerState()
 	{
@@ -108,21 +125,36 @@ public class GameManager : MonoBehaviour {
 
 	public void ResetGame()
 	{
-		lives--;
+        lives = PlayerPrefManager.GetLives();
+        lives--;
+        PlayerPrefManager.SetLives(lives);
 		RefreshGUI();
-		if (lives <= 0)
+		if (lives == 0)
 		{
 			// no more lives, save current player prefs before going to game over
 			PlayerPrefManager.SavePlayerState (score, lives);
 
 			// load game over screen
-			//Application.LoadLevel ()
+            SceneManager.LoadScene("Mainmenu");
 
 		}
 		else {
-			// respawn player
-			//_player.GetComponent<Player>().Respawn(_spawnLocation);
-			Application.LoadLevel (Application.loadedLevelName);
+            SceneManager.LoadScene("Level1");
 		}
 	}
+
+    // public function for level complete
+    public void LevelCompete() {
+        // save the current player prefs before moving to the next level
+        PlayerPrefManager.SavePlayerState(score,lives);
+
+        // use a coroutine to allow the player to get fanfare before moving to next level
+        StartCoroutine(LoadNextLevel());
+    }
+
+    // load the nextLevel after delay
+    IEnumerator LoadNextLevel() {
+        yield return new WaitForSeconds(1.5f); 
+        SceneManager.LoadScene(levelAfterVictory);
+    }
 }

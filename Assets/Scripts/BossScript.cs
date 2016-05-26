@@ -33,7 +33,6 @@ public class BossScript : MonoBehaviour
 
 		// Get the renderers in children
 		renderers = GetComponentsInChildren<SpriteRenderer>();
-
 	}
 
 	void Start()
@@ -47,7 +46,7 @@ public class BossScript : MonoBehaviour
 		// -- Moving
 		moveScript.enabled = false;
 
-		// -- Shooting
+		// -- Shshielooting
 		foreach (WeaponScript weapon in weapons)
 		{
 			weapon.enabled = false;
@@ -102,6 +101,7 @@ public class BossScript : MonoBehaviour
 					}
 				}
 			}
+
 			// Move
 			//----------
 			else

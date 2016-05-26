@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour {
 
@@ -22,10 +23,13 @@ public class MainMenuManager : MonoBehaviour {
 
 	private Animator[] _animators;
 
+    private string _actualView = "Mainmenu";
+
 	int activeIndex = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		_audio = GetComponent<AudioSource>();
 		if (_audio == null)
 		{ 
@@ -64,7 +68,40 @@ public class MainMenuManager : MonoBehaviour {
 
 			SetMenuAsActive(activeIndex);
 		}
+
+        if (Input.GetKeyDown(KeyCode.Return))
+            ProcessEnter();
 	}
+
+    void ProcessEnter()
+    {        
+        Debug.Log("_actualView: " + _actualView);
+        if (_actualView == "Mainmenu")
+        {
+            if (activeIndex == 0)
+            {
+                _actualView = "Level1";
+                SceneManager.LoadScene("Level1");
+            }
+            else if (activeIndex == 1)
+            {
+                _actualView = "Credits";
+                SceneManager.LoadScene("Credits");
+            }
+            else
+            {   
+                Application.Quit();
+            }   
+        }
+        else if(_actualView == "Credits")
+        {
+            if (activeIndex == 0)
+            {
+                _actualView = "Mainmenu";
+                SceneManager.LoadScene("Mainmenu");
+            }
+        }
+    }
 
 	void SetMenuAsActive(int index)
 	{

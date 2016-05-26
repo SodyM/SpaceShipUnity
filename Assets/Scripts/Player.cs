@@ -108,7 +108,13 @@ public class Player : MonoBehaviour {
 		{
 			HealthScript playerHealth = this.GetComponent<HealthScript>();
 			if (playerHealth != null)
-				playerHealth.Damage(otherCollider.gameObject.GetComponent<HealthScript>().damagePoints);
+            {
+                playerHealth.Damage(otherCollider.gameObject.GetComponent<HealthScript>().damagePoints);
+                if (playerHealth.hp <= 0)
+                {
+                    KillPlayer();
+                }
+            }				            
 		}
 	}
 		
@@ -116,21 +122,11 @@ public class Player : MonoBehaviour {
 	{
 	}
 
-	public IEnumerator KillPlayer()
-	{
-		yield return new WaitForSeconds (0.1f);
-		//Application.LoadLevel (Application.loadedLevelName);
-		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
-
-		/*
-		if (GameManager.Instance) {
-			GameManager.Instance.ResetGame ();
-		}
-		else
-		{
-			// just reload current level
-			Application.LoadLevel (Application.loadedLevelName);
-		}
-		*/
+	public void KillPlayer()
+	{	        
+        if (GameManager.gm) // if the gameManager is available, tell it to reset the game
+            GameManager.gm.ResetGame();
+        else // otherwise, just reload the current level
+            SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);       
 	}
 }

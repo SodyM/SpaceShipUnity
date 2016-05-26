@@ -54,7 +54,7 @@ public class HealthScript : MonoBehaviour
 				SoundEffectsHelper.Instance.PlayPlayerDestroyedSound();
 
 				// kill player
-				KillPlayer();
+				//KillPlayer();
 			}
 			else
 			{
