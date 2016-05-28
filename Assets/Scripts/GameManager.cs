@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	// UI elements to control
 	public Text UIScore;
 	public Text UILevel;
+    public GameObject UIGamePaused;
 
 	public GameObject hudRespect;
 	public GameObject hudWrong;
@@ -47,6 +48,22 @@ public class GameManager : MonoBehaviour {
 
 		SetupDefaults ();
 	}
+
+    // game loop
+    void Update() {        
+        if (Input.GetKeyDown(KeyCode.Escape))                   // if ESC pressed then pause the game
+        {
+            if (Time.timeScale > 0f)
+            {
+                UIGamePaused.SetActive(true);                   // this brings up the pause UI
+                Time.timeScale = 0f;                            // this pauses the game action
+            } else
+            {
+                Time.timeScale = 1f;                            // this unpauses the game action (ie. back to normal)
+                UIGamePaused.SetActive(false);                  // remove the pause UI
+            }
+        }
+    }
 
 	void SetupDefaults()
 	{
