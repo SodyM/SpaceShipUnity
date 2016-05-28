@@ -62,7 +62,7 @@ public class Player : MonoBehaviour {
 		// move player
 		GetComponent<Rigidbody2D>().velocity = movement;
 	}
-		
+	
 	void OnTriggerEnter2D(Collider2D otherCollider)
 	{
 		bool damagePlayer = false;
@@ -102,6 +102,13 @@ public class Player : MonoBehaviour {
 			SoundEffectsHelper.Instance.PlayPickCoin();
 			coin.DestroyCoin();
 		}
+
+
+        if (otherCollider.gameObject.tag.Equals("EndLevel"))
+        {
+            if (GameManager.gm) // do the game manager level compete stuff, if it is available
+                GameManager.gm.LevelCompete();
+        }
 
 		// Damage the player
 		if (damagePlayer)

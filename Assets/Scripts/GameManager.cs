@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour {
 
 	// UI elements to control
 	public Text UIScore;
+    public Text UIHighScore;
 	public Text UILevel;
+    public GameObject[] UIExtraLives;
     public GameObject UIGamePaused;
 
 	public GameObject hudRespect;
@@ -36,7 +38,21 @@ public class GameManager : MonoBehaviour {
 	Vector3 _spawnLocation;
 
 
+    // set things up here
+    void Awake () {
 
+        // setup reference to game manager
+        if (gm == null)
+            gm = this.GetComponent<GameManager>();
+
+        if (Instance == null)
+            Instance = this.GetComponent<GameManager>();
+        
+        // setup all the variables, the UI, and provide errors if things not setup properly.
+        SetupDefaults();
+    }
+
+    /*
 	// Use this for initialization
 	void Start ()
 	{	
@@ -48,6 +64,7 @@ public class GameManager : MonoBehaviour {
 
 		SetupDefaults ();
 	}
+    */
 
     // game loop
     void Update() {        
@@ -73,39 +90,71 @@ public class GameManager : MonoBehaviour {
 		// get initial spawn location
 		_spawnLocation = _player.transform.position;
 
+        // if levels not specified, default to current level
+        if (levelAfterVictory=="") {
+            Debug.LogWarning("levelAfterVictory not specified, defaulted to current level");
+            levelAfterVictory = SceneManager.GetActiveScene().name;
+        }
+
+        if (levelAfterGameOver=="") {
+            Debug.LogWarning("levelAfterGameOver not specified, defaulted to current level");
+            levelAfterGameOver = SceneManager.GetActiveScene().name;
+        }
+
+        // friendly error messages
+        if (UIScore==null)
+            Debug.LogError ("Need to set UIScore on Game Manager.");
+
+        if (UILevel==null)
+            Debug.LogError ("Need to set UILevel on Game Manager.");
+
+        if (UIGamePaused==null)
+            Debug.LogError ("Need to set UIGamePaused on Game Manager.");
+        
         PlayerPrefManager.SetLives(lives);
 
 		// get stored players prefs
 		RefreshPlayerState();
 
 		// get the ui ready for the game
-		RefreshGUI();
+		refreshGUI();
 	}
 
-    // set things up here
-    void Awake () {
-        Debug.Log("aaaaa");
 
-        // setup reference to game manager
-        if (gm == null)
-            gm = this.GetComponent<GameManager>();
-
-        // setup all the variables, the UI, and provide errors if things not setup properly.
-        SetupDefaults();
-    }
 
 	void RefreshPlayerState()
-	{
-		lives = PlayerPrefManager.GetLives();
-		score = PlayerPrefManager.GetScore();
+	{   
+        lives = PlayerPrefManager.GetLives();
+
+        // special case if lives <= 0 then must be testing in editor, so reset the player prefs
+        if (lives <= 0) {
+            PlayerPrefManager.ResetPlayerState(startLives,false);
+            lives = PlayerPrefManager.GetLives();
+        }
+        score = PlayerPrefManager.GetScore();
+        highscore = PlayerPrefManager.GetHighscore();
+
+        // save that this level has been accessed so the MainMenu can enable it
+        PlayerPrefManager.UnlockLevel();
 	}
 
-	void RefreshGUI()
-	{
-		UIScore.text = "Score: " + score.ToString ();
-		UILevel.text = "Level 1";
-	}
-		
+    // refresh all the GUI elements
+    void refreshGUI() {
+        // set the text elements of the UI
+        UIScore.text = "Score: "+score.ToString();
+        //UIHighScore.text = "Highscore: "+highscore.ToString ();
+        UILevel.text = SceneManager.GetActiveScene().name;
+
+        // turn on the appropriate number of life indicators in the UI based on the number of lives left
+        for(int i=0;i<UIExtraLives.Length;i++) {
+            if (i<(lives-1)) { // show one less than the number of lives since you only typically show lifes after the current life in UI
+                UIExtraLives[i].SetActive(true);
+            } else {
+                UIExtraLives[i].SetActive(false);
+            }
+        }
+    }
+
 	public void AddPoints(int amount)
 	{		
 		// increase score
@@ -140,37 +189,34 @@ public class GameManager : MonoBehaviour {
 		hudWrong.SetActive (false);	
 	}
 
-	public void ResetGame()
-	{
-        lives = PlayerPrefManager.GetLives();
+    // public function to remove player life and reset game accordingly
+    public void ResetGame() {
+        // remove life and update GUI
         lives--;
-        PlayerPrefManager.SetLives(lives);
-		RefreshGUI();
-		if (lives == 0)
-		{
-			// no more lives, save current player prefs before going to game over
-			PlayerPrefManager.SavePlayerState (score, lives);
+        refreshGUI();
 
-			// load game over screen
-            SceneManager.LoadScene("Mainmenu");
-
-		}
-		else {
-            SceneManager.LoadScene("Level1");
-		}
-	}
+        if (lives<=0) { // no more lives            
+            PlayerPrefManager.SavePlayerState(score, highscore, lives);                 // save the current player prefs before going to GameOver
+            SceneManager.LoadScene(levelAfterGameOver);                                 // load the gameOver screen
+        }
+        else
+        { 
+            // tell the player to respawn
+            //_player.GetComponent<CharacterController2D>().Respawn(_spawnLocation);
+            SceneManager.LoadScene("Level1");                                 // load the gameOver screen
+        }
+    }
 
     // public function for level complete
-    public void LevelCompete() {
-        // save the current player prefs before moving to the next level
-        PlayerPrefManager.SavePlayerState(score,lives);
-
-        // use a coroutine to allow the player to get fanfare before moving to next level
-        StartCoroutine(LoadNextLevel());
+    public void LevelCompete()
+    {        
+        PlayerPrefManager.SavePlayerState(score,highscore,lives);                   // save the current player prefs before moving to the next level
+        StartCoroutine(LoadNextLevel());                                            // use a coroutine to allow the player to get fanfare before moving to next level
     }
 
     // load the nextLevel after delay
-    IEnumerator LoadNextLevel() {
+    IEnumerator LoadNextLevel()
+    {
         yield return new WaitForSeconds(1.5f); 
         SceneManager.LoadScene(levelAfterVictory);
     }
