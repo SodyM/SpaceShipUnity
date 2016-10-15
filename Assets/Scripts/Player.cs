@@ -17,8 +17,8 @@ public class Player : MonoBehaviour {
 		float inputX = Input.GetAxis("Horizontal");
 		float inputY = Input.GetAxis("Vertical");
 
-		bool spaceUp = Input.GetKeyDown(KeyCode.Space);
-		if (spaceUp)
+        bool spaceUp = Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump");
+        if (spaceUp)
 		{
 			WeaponScript weapon = GetComponent<WeaponScript>();
 			if (weapon != null)

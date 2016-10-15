@@ -197,13 +197,14 @@ public class GameManager : MonoBehaviour {
 
         if (lives<=0) { // no more lives            
             PlayerPrefManager.SavePlayerState(score, highscore, lives);                 // save the current player prefs before going to GameOver
-            SceneManager.LoadScene(levelAfterGameOver);                                 // load the gameOver screen
+            //SceneManager.LoadScene(levelAfterGameOver);                                 // load the gameOver screen
+            SceneManager.LoadScene("Level2");                                 // load the gameOver screen
         }
         else
         { 
             // tell the player to respawn
             //_player.GetComponent<CharacterController2D>().Respawn(_spawnLocation);
-            SceneManager.LoadScene("Level1");                                 // load the gameOver screen
+            SceneManager.LoadScene("Level2");                                 // load the gameOver screen
         }
     }
 
