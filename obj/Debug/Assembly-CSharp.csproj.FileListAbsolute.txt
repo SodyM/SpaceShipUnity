@@ -40,3 +40,5 @@ C:\Projects\SpaceShipUnity\Temp\bin\Debug\UnityEditor.xml
 C:\Projects\SpaceShipUnity\Temp\bin\Debug\UnityEngine.UI.xml
 C:\Projects\SpaceShipUnity\Temp\bin\Debug\UnityEngine.Networking.xml
 C:\Projects\SpaceShipUnity\obj\Debug\Assembly-CSharp.pdb
+C:\Unity\SpaceShipUnity\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+C:\Unity\SpaceShipUnity\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
